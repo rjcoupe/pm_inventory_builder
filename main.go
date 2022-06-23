@@ -86,7 +86,7 @@ func validateArgs() {
 func sendRequest(request *http.Request) []byte {
 	switch authMode {
 	case AUTH_TOKEN:
-		request.Header.Set("Authorization", fmt.Sprintf("%s=%s", pmTokenId, pmTokenSecret))
+		request.Header.Set("Authorization", fmt.Sprintf("PVEAPIToken=%s=%s", pmTokenId, pmTokenSecret))
 	case AUTH_BASIC:
 		request.AddCookie(&http.Cookie{Name: "PVEAuthCookie", Value: credentials.Data.Ticket})
 	}
