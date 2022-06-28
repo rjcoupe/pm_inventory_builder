@@ -22,5 +22,5 @@ Usage of pm_inventory_builder:
         Proxmox API URL (default "https://localhost:8006")
 ```
 
-### Example
+### Example
 `$ pm_inventory_builder -url https://192.168.1.100:8006 -allow-insecure-tls -ansible-user ubuntu -tokenId 'myUser@pve!myToken' -tokenSecret '44a2085e-f9ae-41c7-a595-d66ece971203' > my_proxmox_inventory.yaml`
