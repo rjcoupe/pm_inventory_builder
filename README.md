@@ -10,9 +10,9 @@ Usage of pm_inventory_builder:
         Allow insecure TLS communication with Proxmox
   -ansible-user string
         SSH user on which Ansible should attempt to connect
-  -api-password string
+  -apiPassword string
         Proxmox Password. Can also be set (and is recommended as such) via the PROXMOX_API_PASSWORD environment variable
-  -api-user string
+  -apiUser string
         Proxmox User. Can also be set via the PROXMOX_API_USERNAME environment variable
   -tokenId string
         Proxmox Token ID - if this is set, username/password parameters are ignored. Can also be set via the PROXMOX_TOKEN_ID environment variable
