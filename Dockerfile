@@ -4,16 +4,17 @@ FROM golang:1.19.2-alpine3.16 AS builder
 
 WORKDIR /app
 
-COPY --link . .
+COPY go.* .
 RUN go mod download
-RUN go build -v -o pm_inventory_builder
+COPY --link . .
+RUN --mount=type=cache,target=/root/.cache/go-build go build -v -o /out/pm_inventory_builder .
 
-FROM golang:1.19.2-alpine3.16 AS app
+FROM alpine:3.16 AS app
 
-COPY --link --chmod=755 --from=builder /app/pm_inventory_builder /app/pm_inventory_builder
-COPY --link --chmod=755 entrypoint.sh /entrypoint.sh
+COPY --link --chmod=755 --from=builder /out/pm_inventory_builder /
+COPY --link --chmod=755 entrypoint.sh /
 
 VOLUME /data
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD [ "/app/pm_inventory_builder", "-help" ]
+CMD [ "pm_inventory_builder", "-help" ]
